@@ -15,27 +15,34 @@ import java.util.Optional;
 public class ScoreController {
     @Autowired
     private ScoreService scoreService;
+
+    @CrossOrigin
     @GetMapping("/all")
     public List<Score> getServices(){
         return scoreService.getAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public Optional<Score> getService(@PathVariable("id") int scoreId) {
         return scoreService.getScore(scoreId);
     }
 
+    @CrossOrigin
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score score) {
         return scoreService.save(score);
     }
+
+    @CrossOrigin
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Score update(@RequestBody Score score) {
         return scoreService.update(score);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int scoreId) {

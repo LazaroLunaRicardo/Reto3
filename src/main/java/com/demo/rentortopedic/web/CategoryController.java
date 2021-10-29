@@ -15,27 +15,34 @@ import java.util.Optional;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+    @CrossOrigin
     @GetMapping("/all")
     public List<Category> getOrtopedics(){
         return categoryService.getAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public Optional<Category> getCategory(@PathVariable("id") int categoryId) {
         return categoryService.getCategory(categoryId);
     }
 
+    @CrossOrigin
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category category) {
         return categoryService.save(category);
     }
+
+    @CrossOrigin
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Category update(@RequestBody Category category) {
         return categoryService.update(category);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int categoryId) {

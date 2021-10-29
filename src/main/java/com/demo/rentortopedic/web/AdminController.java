@@ -16,27 +16,34 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @CrossOrigin
     @GetMapping("/all")
     public List<Admin> getAdmins(){
         return adminService.getAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public Optional<Admin> getAdmin(@PathVariable("id") int adminId) {
         return adminService.getAdmin(adminId);
     }
 
+    @CrossOrigin
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Admin save(@RequestBody Admin admin) {
         return adminService.save(admin);
     }
+
+    @CrossOrigin
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Admin update(@RequestBody Admin admin) {
         return adminService.update(admin);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int adminId) {
